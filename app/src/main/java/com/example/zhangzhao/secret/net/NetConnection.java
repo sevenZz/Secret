@@ -38,6 +38,7 @@ public class NetConnection {
                             uc.setDoOutput(true);
                             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(uc.getOutputStream(), Config.CHARSET));
                             bw.write(paramStr.toString());
+                            bw.flush();
                             break;
                         default:
                             uc = new URL(url + "?" + paramStr.toString()).openConnection();
@@ -68,7 +69,7 @@ public class NetConnection {
 
                 if (result != null){
                     if (successCallback != null){
-                        successCallback.onSeccess(result);
+                        successCallback.onSuccess(result);
                     }
                 }else{
                     if (failCallback != null){
@@ -78,12 +79,12 @@ public class NetConnection {
 
                 super.onPostExecute(result);
             }
-        };
+        }.execute();
     }
 
 
     public static interface SuccessCallback{
-        void onSeccess(String result);
+        void onSuccess(String result);
     }
 
     public static interface FailCallback{

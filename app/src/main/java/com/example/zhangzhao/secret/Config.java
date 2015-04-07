@@ -12,6 +12,18 @@ public class Config {
     public static final String APP_ID = "com.example.zhangzhao.secret";
     public static final String CHARSET = "UTF-8";
 
+    //public static final String SERVER_URL = "http://demo.eoeschool.com/api/v1/nimings/io";
+    public static final String SERVER_URL = "http://10.202.101.231:81/Output.ashx";
+
+    public static final String ACTION_GET_CODE = "send_pass";
+    public static final String KEY_ACTION = "action";
+    public static final String KEY_PHONE_NUM = "phone";
+    public static final String KEY_STATUS = "status";
+
+    public static final int RESULT_STATUS_SUCCESS = 1;
+    public static final int RESULT_STATUE_FAIL = 0;
+    public static final int RESULT_STATUE_INVALID_TOKEN = 2;
+
     public static String getCachedToken(Context context){
         return context.getSharedPreferences(APP_ID, Context.MODE_PRIVATE).getString(KEY_TOKEN, null);
     }

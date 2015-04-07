@@ -8,5 +8,10 @@
     <string name="get_code">get code</string>
     <string name="code">Code</string>
     <string name="login">Login</string>
+    <string name="phone_num_can_not_be_empty">Phone number can\'t be empty!</string>
+    <string name="fail_to_get_code">Fail to get code</string>
+    <string name="suc_to_get_code">Success to get code,please check your sms</string>
+    <string name="connecting">Connecting...</string>
+    <string name="connecting_to_server">Connecting to server, please wait...</string>
 
 </resources>
