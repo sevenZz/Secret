@@ -23,14 +23,27 @@ public class Config {
     public static final int RESULT_STATUS_SUCCESS = 1;
     public static final int RESULT_STATUE_FAIL = 0;
     public static final int RESULT_STATUE_INVALID_TOKEN = 2;
+    public static final String ACTION_LOGIN = "login";
+    public static final String KEY_PHONE_MD5 = "phone_md5";
+    public static final String KEY_CODE = "code";
 
     public static String getCachedToken(Context context){
         return context.getSharedPreferences(APP_ID, Context.MODE_PRIVATE).getString(KEY_TOKEN, null);
     }
 
-    public void cacheToken(Context context, String token){
+    public static void cacheToken(Context context, String token){
         SharedPreferences.Editor e = context.getSharedPreferences(APP_ID, Context.MODE_PRIVATE).edit();
         e.putString(KEY_TOKEN, token);
+        e.commit();
+    }
+
+    public static String getCachedPhoneNum(Context context){
+        return context.getSharedPreferences(APP_ID, Context.MODE_PRIVATE).getString(KEY_PHONE_NUM, null);
+    }
+
+    public static void cachePhoneNum(Context context, String phone){
+        SharedPreferences.Editor e = context.getSharedPreferences(APP_ID, Context.MODE_PRIVATE).edit();
+        e.putString(KEY_PHONE_NUM, phone);
         e.commit();
     }
 }
