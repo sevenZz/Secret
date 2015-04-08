@@ -8,6 +8,7 @@ import android.view.MenuItem;
 
 import com.example.zhangzhao.secret.atys.AtyLogin;
 import com.example.zhangzhao.secret.atys.AtyTimeline;
+import com.example.zhangzhao.secret.ld.MyContacts;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -15,7 +16,6 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
         String token = Config.getCachedToken(this);
         if (token != null){

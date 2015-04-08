@@ -27,6 +27,9 @@ public class Config {
     public static final String KEY_PHONE_MD5 = "phone_md5";
     public static final String KEY_CODE = "code";
 
+    public static final String ACTION_UPLOAD_CONTACTS = "upload_contacts";
+    public static final String KEY_CONTACTS = "contacts";
+
     public static String getCachedToken(Context context){
         return context.getSharedPreferences(APP_ID, Context.MODE_PRIVATE).getString(KEY_TOKEN, null);
     }
