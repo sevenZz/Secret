@@ -18,9 +18,13 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
 
         String token = Config.getCachedToken(this);
+        String phoneNum = Config.getCachedPhoneNum(this);
+
+
         if (token != null){
             Intent i = new Intent(this, AtyTimeline.class);
             i.putExtra(Config.KEY_TOKEN, token);
+            i.putExtra(Config.KEY_PHONE_NUM, phoneNum);
             startActivity(i);
         } else{
             startActivity(new Intent(this, AtyLogin.class));

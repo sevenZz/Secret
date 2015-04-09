@@ -30,6 +30,14 @@ public class Config {
     public static final String ACTION_UPLOAD_CONTACTS = "upload_contacts";
     public static final String KEY_CONTACTS = "contacts";
 
+    public static final String ACTION_TIMELINE = "timeline";
+    public static final String KEY_TIMELINE = "timeline";
+    public static final String KEY_PAGE = "page";
+    public static final String KEY_PERPAGE = "perpage";
+
+    public static final String KEY_MSG = "msg";
+    public static final String KEY_MSG_ID = "msgId";
+
     public static String getCachedToken(Context context){
         return context.getSharedPreferences(APP_ID, Context.MODE_PRIVATE).getString(KEY_TOKEN, null);
     }
