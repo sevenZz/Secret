@@ -36,6 +36,16 @@ public class Timeline {
 
                                 successCallBack.onSuccess(obj.getInt(Config.KEY_PAGE), obj.getInt(Config.KEY_PERPAGE), msgs);
                             }
+                            break;
+                        case Config.RESULT_STATUE_INVALID_TOKEN:
+                            if(failCallBack != null){
+                                failCallBack.onFail(Config.RESULT_STATUE_FAIL);
+                            }
+                            break;
+                        default:
+                            if (failCallBack != null){
+                                failCallBack.onFail(Config.RESULT_STATUE_FAIL);
+                            }
 
                     }
                 } catch (JSONException e) {
@@ -46,7 +56,7 @@ public class Timeline {
             @Override
             public void onFail() {
                 if (failCallBack != null){
-                    failCallBack.onFail();
+                    failCallBack.onFail(Config.RESULT_STATUE_FAIL);
                 }
             }
         }, Config.KEY_ACTION, Config.ACTION_TIMELINE,
@@ -61,6 +71,6 @@ public class Timeline {
         void onSuccess(int page, int perpage, List<Message> timeline);
     }
     public static interface FailCallBack{
-        void onFail();
+        void onFail(int error);
     }
 }

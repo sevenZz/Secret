@@ -5,6 +5,8 @@ import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.zhangzhao.secret.Config;
@@ -78,13 +80,32 @@ public class AtyTimeline extends ListActivity {
             }
         }, new Timeline.FailCallBack() {
             @Override
-            public void onFail() {
+            public void onFail(int error) {
                 pd.dismiss();
 
-                Toast.makeText(AtyTimeline.this, R.string.fail_to_load_timeline_data, Toast.LENGTH_LONG).show();
+                if (error == Config.RESULT_STATUE_INVALID_TOKEN){
+                    startActivity(new Intent(AtyTimeline.this, AtyLogin.class));
+                    finish();
+                }else{
+                    Toast.makeText(AtyTimeline.this, R.string.fail_to_load_timeline_data, Toast.LENGTH_LONG).show();
+                }
+
             }
         });
     }
 
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
 
+        Message msg = adapter.getItem(position);
+
+        Intent i = new Intent(this, AtyMessage.class);
+        i.putExtra(Config.KEY_MSG, msg.getMsg());
+        i.putExtra(Config.KEY_MSG_ID, msg.getMsgId());
+        i.putExtra(Config.KEY_PHONE_MD5, msg.getPhone_md5());
+        i.putExtra(Config.KEY_TOKEN, token);
+
+        startActivity(i);
+    }
 }

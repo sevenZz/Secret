@@ -37,6 +37,9 @@ public class Config {
 
     public static final String KEY_MSG = "msg";
     public static final String KEY_MSG_ID = "msgId";
+    public static final String ACTION_GET_COMMENT = "get_comment";
+    public static final String KEY_COMMENTS = "comments";
+    public static final String KEY_CONTENT = "content";
 
     public static String getCachedToken(Context context){
         return context.getSharedPreferences(APP_ID, Context.MODE_PRIVATE).getString(KEY_TOKEN, null);

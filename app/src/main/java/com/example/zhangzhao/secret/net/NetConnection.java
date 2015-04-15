@@ -73,7 +73,7 @@ public class NetConnection {
                     }
                 }else{
                     if (failCallback != null){
-                        failCallback.onFail();
+                        failCallback.onFail(Config.RESULT_STATUE_FAIL);
                     }
                 }
 
@@ -88,6 +88,6 @@ public class NetConnection {
     }
 
     public static interface FailCallback{
-        void onFail();
+        void onFail(int error);
     }
 }
