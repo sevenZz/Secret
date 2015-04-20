@@ -5,6 +5,8 @@ import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -107,5 +109,28 @@ public class AtyTimeline extends ListActivity {
         i.putExtra(Config.KEY_TOKEN, token);
 
         startActivity(i);
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_aty_timeline, menu);
+
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.menuShowAtyPubMessage:
+                startActivity(new Intent(AtyTimeline.this, AtyPubMessage.class));
+                break;
+            default:
+                break;
+        }
+        return true;
     }
 }
