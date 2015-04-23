@@ -43,16 +43,22 @@ public class AtyTimeline extends ListActivity {
 
         phone_num = getIntent().getStringExtra(Config.KEY_PHONE_NUM);
         token = getIntent().getStringExtra(Config.KEY_TOKEN);
+        System.out.println(phone_num);
+        System.out.println(token);
         phone_md5 = MD5Tool.md5(phone_num);
+        String contacts = MyContacts.getContactsJSONString(this);
 
         final ProgressDialog pd = ProgressDialog.show(this, getResources().getString(R.string.connecting), getResources().getString(R.string.connecting_to_server));
 
-        new UploadContacts(phone_md5, token, MyContacts.getContactsJSONString(this), new UploadContacts.SuccessCallBack() {
+        new UploadContacts(phone_md5, token, contacts,
+                new UploadContacts.SuccessCallBack() {
             @Override
             public void onSuccess() {
-                loadMessage();
 
                 pd.dismiss();
+                loadMessage();
+
+
             }
         }, new UploadContacts.FailCallBack() {
             @Override
@@ -77,8 +83,8 @@ public class AtyTimeline extends ListActivity {
             public void onSuccess(int page, int perpage, List<Message> timeline) {
                 pd.dismiss();
 
+                adapter.clear();
                 adapter.addAll(timeline);
-                //setListAdapter(adapter);
             }
         }, new Timeline.FailCallBack() {
             @Override
@@ -126,11 +132,25 @@ public class AtyTimeline extends ListActivity {
 
         switch (item.getItemId()){
             case R.id.menuShowAtyPubMessage:
-                startActivity(new Intent(AtyTimeline.this, AtyPubMessage.class));
+                Intent i = new Intent(AtyTimeline.this, AtyPubMessage.class);
+                i.putExtra(Config.KEY_PHONE_MD5, phone_md5);
+                i.putExtra(Config.KEY_TOKEN, token);
+                startActivityForResult(i, 0);
                 break;
             default:
                 break;
         }
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (resultCode){
+            case Config.ACTIVITY_RESULT_NEED_REFRESH:
+                loadMessage();
+                break;
+            default:
+                break;
+        }
     }
 }

@@ -25,7 +25,7 @@ public class GetCode {
                             break;
                         default:
                             if (failCallBack != null) {
-                                failCallBack.onFail();
+                                failCallBack.onFail(Config.RESULT_STATUE_FAIL);
                             }
                             break;
                     }
@@ -33,16 +33,14 @@ public class GetCode {
                     e.printStackTrace();
 
                     if (failCallBack != null){
-                        failCallBack.onFail();
+                        failCallBack.onFail(Config.RESULT_STATUE_FAIL);
                     }
                 }
             }
         }, new NetConnection.FailCallback() {
             @Override
-            public void onFail() {
-                if (failCallBack != null){
-                    onFail();
-                }
+            public void onFail(int error) {
+                failCallBack.onFail(Config.RESULT_STATUE_FAIL);
             }
         }, Config.KEY_ACTION, Config.ACTION_GET_CODE, Config.KEY_PHONE_NUM, phone);
 
@@ -54,6 +52,6 @@ public class GetCode {
     }
 
     public static interface FailCallBack{
-        void onFail();
+        void onFail(int error);
     }
 }

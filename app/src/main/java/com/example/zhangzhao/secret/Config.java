@@ -44,6 +44,8 @@ public class Config {
     public static final String ACTION_PUB_COMMENT = "pub_comment";
     public static final String ACTION_PUBLISH = "publish";
 
+    public static final int ACTIVITY_RESULT_NEED_REFRESH = 10000;
+
     public static String getCachedToken(Context context){
         return context.getSharedPreferences(APP_ID, Context.MODE_PRIVATE).getString(KEY_TOKEN, null);
     }

@@ -35,7 +35,7 @@ public class Login {
             }
         }, new NetConnection.FailCallback() {
             @Override
-            public void onFail() {
+            public void onFail(int error) {
                 if (failCallBack != null){
                     failCallBack.onFail();
                 }

@@ -50,11 +50,12 @@ public class Timeline {
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    failCallBack.onFail(Config.RESULT_STATUE_FAIL);
                 }
             }
         }, new NetConnection.FailCallback() {
             @Override
-            public void onFail() {
+            public void onFail(int error) {
                 if (failCallBack != null){
                     failCallBack.onFail(Config.RESULT_STATUE_FAIL);
                 }

@@ -50,7 +50,7 @@ public class AtyLogin extends Activity {
                     }
                 }, new GetCode.FailCallBack() {
                     @Override
-                    public void onFail() {
+                    public void onFail(int error) {
                         pd.dismiss();
                         Toast.makeText(AtyLogin.this, R.string.fail_to_get_code, Toast.LENGTH_LONG).show();
                     }

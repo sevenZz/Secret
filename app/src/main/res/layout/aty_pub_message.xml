@@ -4,6 +4,7 @@
     android:layout_height="match_parent">
 
     <EditText
+        android:id="@+id/etMsgContent"
         android:gravity="left"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -11,6 +12,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
+        android:id="@+id/btnPublish"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Publish message"

@@ -20,4 +20,7 @@
     <string name="comment_content_can_not_be_empty">Comment content can not be empty!</string>
     <string name="fail_to_pub_comment">Fail to publish comment,please try again later</string>
     <string name="publish">publish</string>
+    <string name="fail_to_pub_message">Fail to publish message,please try again later</string>
+    <string name="message_can_not_be_empty">Message can\'t be empty!</string>
+    <string name="success_to_pub_message">Message published successfully!</string>
 </resources>
